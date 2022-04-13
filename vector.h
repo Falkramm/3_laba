@@ -42,6 +42,14 @@ public:
             arr[i] = value;
     }
 
+    int getSize() const {
+        return size;
+    }
+
+    int getCapacity() const {
+        return capacity;
+    }
+
     main_type &operator[](int i) {
         return arr[i];
     }
@@ -76,10 +84,10 @@ public:
         return os;
     }
     size_t fread(FILE * filestream){
-        return std::fread(arr,size,sizeof(main_type),filestream);
+        return std::fread(arr,sizeof(main_type),size,filestream);
     }
     size_t fwrite(FILE * filestream){
-        return std::fwrite(arr,size,sizeof(main_type),filestream);
+        return std::fwrite(arr,sizeof(main_type),size,filestream);
     }
     friend std::istream &operator>>(std::istream &is, vector &vector_) {
         for(size_t i=0;i<vector_.size;++i)
