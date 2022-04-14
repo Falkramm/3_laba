@@ -3,4 +3,4 @@ project(3_laba)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(3_laba main.cpp vector.h)
+add_executable(3_laba main.cpp vector.h DopFuncktions.h Elements.cpp Elements.h)

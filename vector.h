@@ -6,7 +6,9 @@
 
 #ifndef INC_3_LABA_VECTOR_H
 #define INC_3_LABA_VECTOR_H
+
 #include <stdio.h>
+
 template<typename main_type>
 class vector {
 private:
@@ -54,10 +56,10 @@ public:
         return arr[i];
     }
 
-    void operator=( vector &vector_)  {
+    void operator=(vector &vector_) {
         resize(vector_.size);
-        for(size_t i=0;i<vector_.size;++i)
-            arr[i]=vector_[i];
+        for (size_t i = 0; i < vector_.size; ++i)
+            arr[i] = vector_[i];
     }
 
 
@@ -77,22 +79,29 @@ public:
     friend std::ostream &operator<<(std::ostream &os, vector &vector_) {
         os << "size: " << vector_.size << "\n";
         os << "capacity: " << vector_.capacity << "\n";
-        os << "arr: ";
+        os << "arr:\n";
         for (size_t i = 0; i < vector_.size; ++i)
-            os << vector_[i] << ' ';
+            os << vector_[i];
         os << "\n";
         return os;
     }
-    size_t fread(FILE * filestream){
-        return std::fread(arr,sizeof(main_type),size,filestream);
+
+    size_t fread(FILE *filestream) {
+        return std::fread(arr, sizeof(main_type), size, filestream);
     }
-    size_t fwrite(FILE * filestream){
-        return std::fwrite(arr,sizeof(main_type),size,filestream);
+
+    size_t fwrite(FILE *filestream) {
+        return std::fwrite(arr, sizeof(main_type), size, filestream);
     }
+
     friend std::istream &operator>>(std::istream &is, vector &vector_) {
-        for(size_t i=0;i<vector_.size;++i)
+        for (size_t i = 0; i < vector_.size; ++i)
             is >> vector_[i];
         return is;
+    }
+
+    bool operator!=(const vector &rhs) const {
+        return !(rhs == *this);
     }
 };
 
